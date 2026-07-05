@@ -43,10 +43,16 @@ async function fetchWithAuth(url, options = {}) {
 
 const api = {
   async register({ name, email, password }) {
-    return fetchWithAuth(`${BASE_URL}/users`, {
+    const response = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password }),
     });
+    const responseJson = await response.json();
+    if (responseJson.status === 'fail') {
+      throw new Error(responseJson.message);
+    }
+    return responseJson.data;
   },
 
   async login({ email, password }) {
