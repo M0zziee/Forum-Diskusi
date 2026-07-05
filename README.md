@@ -26,6 +26,7 @@ Aplikasi forum diskusi berbasis React yang memanfaatkan Dicoding Forum API. Peng
 - **Tailwind CSS v4** — Styling
 - **Lucide React** — Ikon
 - **Vite** — Build tool
+- **Playwright** — E2E testing
 
 ## Memulai
 
@@ -60,6 +61,20 @@ npm run build
 npm run lint
 ```
 
+### E2E Testing
+
+```bash
+npm run e2e
+```
+
+Menjalankan pengujian _end-to-end_ menggunakan **Playwright** dengan mock API (tanpa bergantung server eksternal). Pengujian mencakup alur login sukses dan login gagal.
+
+Untuk melihat browser secara visual saat test:
+
+```bash
+npx playwright test --headed
+```
+
 ## API
 
 Aplikasi ini menggunakan **Dicoding Forum API** dengan base URL `https://forum-api.dicoding.dev/v1`.
@@ -68,7 +83,7 @@ Aplikasi ini menggunakan **Dicoding Forum API** dengan base URL `https://forum-a
 
 | Method | Endpoint | Auth | Deskripsi |
 |--------|----------|------|-----------|
-| POST | `/users` | Tidak | Registrasi |
+| POST | `/register` | Tidak | Registrasi |
 | POST | `/login` | Tidak | Login |
 | GET | `/users/me` | Ya | Profil sendiri |
 | GET | `/threads` | Tidak | Daftar thread |
